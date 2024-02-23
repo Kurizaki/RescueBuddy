@@ -4,18 +4,16 @@ namespace RescueBuddy
 {
     public partial class AlarmPage : ContentPage
     {
-         private ContactsPage _contactsPage;
         private readonly IAudioManager _audioManager;
         private readonly IAudioRecorder _audioRecorder;
         private IAudioPlayer? _audioPlayer;
 
-        public AlarmPage(IAudioManager audioManager, ContactsPage contactsPage)
+        public AlarmPage(IAudioManager audioManager)
         {
             InitializeComponent();
             _audioManager = audioManager;
             _audioRecorder = audioManager.CreateRecorder();
             InitializeAudioPlayer();
-            _contactsPage = contactsPage;
         }
 
         protected override void OnAppearing()
@@ -67,17 +65,10 @@ namespace RescueBuddy
 
         async void OnCallEmergencyContactsButtonClicked(object sender, EventArgs args)
         {
-            if (_contactsPage != null && _contactsPage.contacts != null)
+            /* for (int i = 0; i < Math.Min(SettingsPage.contacts.Count, 5); i++)
             {
-                for (int i = 0; i < Math.Min(_contactsPage.contacts.Count, 5); i++)
-                {
-                    MakePhoneCall(_contactsPage.contacts[i].Phone);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Contacts not available or not properly initialized.");
-            }
+                MakePhoneCall(SettingsPage.contacts[i].Phone);
+            }*/
         }
 
         public void MakePhoneCall(string phoneNumber)

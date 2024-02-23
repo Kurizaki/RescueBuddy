@@ -4,12 +4,10 @@ namespace RescueBuddy
 {
     public partial class MainPage : ContentPage
     {
-        private ContactsPage _contactsPage;
         public MainPage()
         {
             InitializeComponent();
             MainPage.PermissionRequest();
-            _contactsPage = new();
         }
         static async void PermissionRequest()
         {
@@ -28,7 +26,7 @@ namespace RescueBuddy
         }
         async void OnAlarmButtonClicked(object sender, EventArgs args)
         {
-            var alarmPage = new AlarmPage(new AudioManager(), _contactsPage);
+            var alarmPage = new AlarmPage(new AudioManager());
 
             alarmPage.StartAudio();
 
