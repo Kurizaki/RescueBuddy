@@ -2,10 +2,25 @@ namespace RescueBuddy;
 
 public partial class SettingsPage : ContentPage
 {
-    public SettingsPage() => InitializeComponent();
+    private ContactsPage _contactsPage;
+
+    public SettingsPage()
+    {
+        InitializeComponent();
+        var route = Shell.Current.CurrentState.Location;
+        var contactsPageTypeName = Uri.UnescapeDataString(route.ToString().Split('?').LastOrDefault()?.Split('=')?.LastOrDefault());
+
+        var contactsPageType = Type.GetType(contactsPageTypeName);
+        if (contactsPageType != null)
+        {
+            _contactsPage = (ContactsPage)Activator.CreateInstance(contactsPageType);
+        }
+    }
+
 
     async void OnChangeEmergencyContactsButtonClicked(object sender, EventArgs args)
     {
+            await Navigation.PushAsync(_contactsPage);
     }
 
     private async void OnVisitMyHomePageButtonClicked(object sender, EventArgs args)

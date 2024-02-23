@@ -179,7 +179,7 @@
             HorizontalOptions="Center"
             Text="Visit my Homepage!"
             FontSize="16"
-            Clicked="OnChangeEmergencyContactsButtonClicked"/>
+            Clicked="OnVisitMyHomePageButtonClicked"/>
     </Grid>
 
 
