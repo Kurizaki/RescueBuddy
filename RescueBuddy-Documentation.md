@@ -93,3 +93,35 @@ I habe have decided to focus on the must-have user stories and maybe to remove t
 ## 6 Evaluate
 
 ✍️ Insert a link to your learning report here.
+
+## Used Sources:
+https://www.youtube.com/watch?v=80DfwQXbdaQ
+https://www.youtube.com/watch?v=B-5e0PJtSDs
+https://www.youtube.com/watch?v=gf6abNRAhuY
+https://www.youtube.com/watch?v=dgekGX8eYMo&t=196s
+https://learn.microsoft.com/en-us/dotnet/maui/user-interface/handlers/customize?view=net-maui-7.0
+https://stackoverflow.com/questions/74973199/net-maui-navigation-animation
+https://www.youtube.com/watch?v=6qz-yFOVZuU
+https://www.youtube.com/watch?v=civZ1wY-2oM
+https://devblogs.microsoft.com/dotnet/announcing-dotnet-maui-communitytoolkit-mediaelement/
+https://www.youtube.com/watch?v=KaHyRSy5sAs
+https://www.youtube.com/watch?v=oIYnEuZ9oew
+https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/secure-storage?view=net-maui-8.0&tabs=android
+https://www.msdevbuild.com/2022/06/net-maui-store-local-data-with.html
+https://www.youtube.com/watch?v=3xqIXS1SBaU
+https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/permissions?view=net-maui-8.0&tabs=windows
+https://www.youtube.com/watch?v=9GljgwfpiiE
+https://www.youtube.com/watch?v=XRLK786Jaio
+https://learn.microsoft.com/en-us/dotnet/maui/user-interface/images/splashscreen?view=net-maui-8.0&tabs=android
+https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/button?view=net-maui-8.0
+https://learn.microsoft.com/en-us/samples/dotnet/maui-samples/userinterface-checkbox/
+https://learn.microsoft.com/de-de/dotnet/maui/user-interface/shadow?view=net-maui-8.0
+https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/label?view=net-maui-8.0
+https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/shell/tabs?view=net-maui-8.0
+https://learn.microsoft.com/de-de/dotnet/maui/fundamentals/shell/create?view=net-maui-8.0
+https://learn.microsoft.com/en-us/dotnet/maui/fundamentals/shell/pages?view=net-maui-8.0
+https://www.youtube.com/watch?v=RGdeVWQuuZI&t=417s
+https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/border?view=net-maui-8.0
+https://learn.microsoft.com/de-de/dotnet/maui/fundamentals/shell/flyout?view=net-maui-8.0
+https://learn.microsoft.com/en-us/dotnet/maui/user-interface/layouts/?view=net-maui-8.0
+https://learn.microsoft.com/de-de/dotnet/maui/what-is-maui?view=net-maui-8.0
