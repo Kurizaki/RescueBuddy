@@ -1,0 +1,166 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RescueBuddy.SafetyTipsPage"
+             Title="SafetyTipsPage"
+             BackgroundColor="#41AC60">
+
+    <ContentPage.Resources>
+        <Color x:Key="PrimaryColor">#41AC60</Color>
+        <Color x:Key="BorderColor">#363636</Color>
+        <Color x:Key="TextColor">White</Color>
+        <Color x:Key="ButtonColor">#252525</Color>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, Auto, *" 
+    ColumnDefinitions=".75*, .07*"
+    BackgroundColor="{StaticResource PrimaryColor}">
+
+
+        <Label Margin="0,0,0,0"
+           Grid.ColumnSpan="2"
+           FontSize="36"
+           FontAttributes="Italic, Bold"
+           FontFamily="Black Italic"
+           HorizontalOptions="Center"
+           Text="RescueBuddy"
+           TextColor="{StaticResource TextColor}"/>
+
+        <Border Grid.Row="1" 
+            StrokeThickness="0"
+            Grid.ColumnSpan="2" 
+            Margin="0,5,0,0"
+            BackgroundColor="{StaticResource BorderColor}"
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="900"
+            StrokeShape="RoundRectangle 40,40,40,40">
+
+            <Label Margin="5"
+               Grid.ColumnSpan="2"
+               FontSize="24"
+               FontAttributes="Italic, Bold"
+               FontFamily="Black Italic"
+               Text="Safety Tips"
+               HorizontalOptions="Center"
+               TextColor="{StaticResource TextColor}"/>
+        </Border>
+
+        <Button Grid.Row="1"
+            Grid.ColumnSpan="2"
+            WidthRequest="100"
+            HeightRequest="40"
+            VerticalOptions="Center"
+            Margin="0,0,300,845"
+            BackgroundColor="Transparent"
+            HorizontalOptions="Center"
+            Text="Go Home"
+            FontSize="14"
+            Clicked="OnGoHomeButtonClicked"/>
+
+        <!-- Stay Alert -->
+        <Label Margin="20,70,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Stay Alert: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Always be aware of your surroundings and avoid distractions like excessive phone use or headphones at high volumes." FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Plan Ahead -->
+        <Label Margin="20,160,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+            Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Plan Ahead: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Inform someone of your itinerary and expected return time when going to unfamiliar places." FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Use Well-Lit Areas -->
+        <Label Margin="20,230,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Use Well-Lit Areas: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Stick to well-lit and populated areas, especially during nighttime, to minimize risks." FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Trust Your Instincts -->
+        <Label Margin="20,300,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Trust Your Instincts: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="If a situation feels uncomfortable or unsafe, trust your instincts and remove yourself from the situation promptly." FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Keep Emergency Contacts Handy -->
+        <Label Margin="20,390,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Keep Emergency Contacts Handy: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Ensure your emergency contact list is up-to-date in the app, including local authorities, and easy to access in case of need." FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Stay Connected -->
+        <Label Margin="20,490,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Stay Connected: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Maintain a charged phone battery and keep the 'RescueBuddy' app accessible for quick access to emergency features." FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Stay Sober -->
+        <Label Margin="20,580,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Stay Sober: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Avoid excessive alcohol consumption or substance use when out alone, as it can impair judgment and increase vulnerability." FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+    </Grid>
+
+
+</ContentPage>

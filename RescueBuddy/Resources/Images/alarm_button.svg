@@ -1,0 +1,7 @@
+<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
+	<!-- Darker circle as the base -->
+	<circle cx="250" cy="250" r="200" fill="#BC3C3C" />
+
+	<!-- Red circle slightly moved to create a button effect -->
+	<circle cx="235" cy="240" r="200" fill="#D84444" />
+</svg>

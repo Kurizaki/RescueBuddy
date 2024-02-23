@@ -1,0 +1,166 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RescueBuddy.ExplainationPage"
+             Title="ExplainationPage"
+             BackgroundColor="#41AC60">
+
+    <ContentPage.Resources>
+        <Color x:Key="PrimaryColor">#41AC60</Color>
+        <Color x:Key="BorderColor">#363636</Color>
+        <Color x:Key="TextColor">White</Color>
+        <Color x:Key="ButtonColor">#252525</Color>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, Auto, *" 
+    ColumnDefinitions=".75*, .07*"
+    BackgroundColor="{StaticResource PrimaryColor}">
+
+
+        <Label Margin="0,0,0,0"
+           Grid.ColumnSpan="2"
+           FontSize="36"
+           FontAttributes="Italic, Bold"
+           FontFamily="Black Italic"
+           HorizontalOptions="Center"
+           Text="RescueBuddy"
+           TextColor="{StaticResource TextColor}"/>
+
+        <Border Grid.Row="1" 
+            StrokeThickness="0"
+            Grid.ColumnSpan="2" 
+            Margin="0,5,0,0"
+            BackgroundColor="{StaticResource BorderColor}"
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="900"
+            StrokeShape="RoundRectangle 40,40,40,40">
+
+            <Label Margin="5"
+               Grid.ColumnSpan="2"
+               FontSize="24"
+               FontAttributes="Italic, Bold"
+               FontFamily="Black Italic"
+               Text="Explaination"
+               HorizontalOptions="Center"
+               TextColor="{StaticResource TextColor}"/>
+        </Border>
+
+        <Button Grid.Row="1"
+            Grid.ColumnSpan="2"
+            WidthRequest="100"
+            HeightRequest="40"
+            VerticalOptions="Center"
+            Margin="0,0,300,845"
+            BackgroundColor="Transparent"
+            HorizontalOptions="Center"
+            Text=""
+            FontSize="14"
+            Clicked="OnGoHomeButtonClicked"/>
+
+        <!-- RescueBuddy -->
+        <Label Margin="20,70,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="RescueBuddy" FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text=" is your go-to standalone personal safety app, designed for those moments when security is paramount. With its user-friendly interface, the app offers key features to ensure your well-being outdoors:" FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Emergency Alarm Button -->
+        <Label Margin="20,180,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+            Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Emergency Alarm Button: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="A quick tap activates an alert system, notifying your chosen emergency contacts instantly. -> Home" FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Emergency Contact List -->
+        <Label Margin="20,250,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Emergency Contact List: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Store multiple contacts for immediate reach during crises, ensuring swift communication. -> Settings" FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Safety Tips and Guidelines -->
+        <Label Margin="20,320,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Safety Tips and Guidelines: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Access essential advice for various emergencies, empowering you with knowledge on-the-go." FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Audio Recording -->
+        <Label Margin="20,390,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Audio Recording: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Capture crucial moments discreetly with the device's microphone, storing recordings securely. -> Settings" FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- Documented Events Log -->
+        <Label Margin="20,460,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Documented Events Log: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="Each emergency event is logged, providing a retrospective overview for future reference. -> Events Log" FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <!-- This Project -->
+        <Label Margin="20,530,0,0"
+           FontSize="16"
+           HorizontalOptions="Start"
+           Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="This Project " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="is made by Kurizaki (Keanu Koelewijn) for more Infos -> Settings" FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+    </Grid>
+
+
+</ContentPage>

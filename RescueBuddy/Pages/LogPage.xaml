@@ -1,0 +1,100 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RescueBuddy.LogPage"
+             Title="LogPage"
+             BackgroundColor="#41AC60">
+
+    <ContentPage.Resources>
+        <Color x:Key="PrimaryColor">#41AC60</Color>
+        <Color x:Key="BorderColor">#363636</Color>
+        <Color x:Key="TextColor">White</Color>
+        <Color x:Key="ButtonColor">#252525</Color>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto, Auto, *" 
+    ColumnDefinitions=".75*, .25*"
+    BackgroundColor="{StaticResource PrimaryColor}">
+
+
+        <Label Margin="0,0,0,0"
+           Grid.ColumnSpan="2"
+           FontSize="36"
+           FontAttributes="Italic, Bold"
+           FontFamily="Black Italic"
+           HorizontalOptions="Center"
+           Text="RescueBuddy"
+           TextColor="{StaticResource TextColor}"/>
+
+        <Border Grid.Row="1" 
+            StrokeThickness="0"
+            Grid.ColumnSpan="2" 
+            Margin="0,5,0,0"
+            BackgroundColor="{StaticResource BorderColor}"
+            HorizontalOptions="FillAndExpand"
+            HeightRequest="900"
+            StrokeShape="RoundRectangle 40,40,40,40">
+
+            <Label Margin="5"
+               Grid.ColumnSpan="2"
+               FontSize="24"
+               FontAttributes="Italic, Bold"
+               FontFamily="Black Italic"
+               Text="Events Log"
+               HorizontalOptions="Center"
+               TextColor="{StaticResource TextColor}"/>
+        </Border>
+
+        <Button Grid.Row="1"
+            Grid.ColumnSpan="2"
+            WidthRequest="250"
+            HeightRequest="50"
+            VerticalOptions="Center"
+            Margin="0,0,0,725"
+            BackgroundColor="{StaticResource ButtonColor}"
+            HorizontalOptions="Center"
+            Text="Choose Log"
+            FontSize="16"
+            Clicked="OnChooseLogButtonClicked"/>
+
+        <Label Margin="20,150,0,0"
+            FontSize="16"
+            HorizontalOptions="Start"
+            Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Log Name: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="" FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Margin="20,180,0,0"
+            FontSize="16"
+            HorizontalOptions="Start"
+            Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Date: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="" FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Margin="20,210,0,0"
+            FontSize="16"
+            HorizontalOptions="Start"
+            Grid.Row="1">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Time: " FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                    <Span Text="" FontSize="16" FontAttributes="Italic, Bold" FontFamily="Black Italic" TextColor="#8B8B8B"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </Grid>
+
+
+</ContentPage>
