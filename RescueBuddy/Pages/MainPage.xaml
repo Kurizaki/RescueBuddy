@@ -1,15 +1,8 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RescueBuddy.MainPage"
+             x:Class="RescueBuddy.Pages.MainPage"
              Title="RescueBuddy"
              BackgroundColor="#41AC60">
-
-    <ContentPage.Resources>
-        <Color x:Key="PrimaryColor">#41AC60</Color>
-        <Color x:Key="BorderColor">#363636</Color>
-        <Color x:Key="TextColor">White</Color>
-        <Color x:Key="ButtonColor">#252525</Color>
-    </ContentPage.Resources>
 
     <Grid RowDefinitions="Auto, Auto, *" 
     ColumnDefinitions=".75*, .25*"
@@ -35,8 +28,7 @@
             StrokeShape="RoundRectangle 40,40,40,40">
 
             <Label Margin="5"
-               Grid.ColumnSpan="2"
-               FontSize="24"
+                   FontSize="24"
                FontAttributes="Italic, Bold"
                FontFamily="Black Italic"
                Text="Home"

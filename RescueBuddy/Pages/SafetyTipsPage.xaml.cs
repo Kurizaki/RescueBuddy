@@ -1,13 +1,13 @@
-namespace RescueBuddy;
+namespace RescueBuddy.Pages;
 
-public partial class SafetyTipsPage : ContentPage
+public partial class SafetyTipsPage
 {
 	public SafetyTipsPage()
 	{
 		InitializeComponent();
 	}
 
-    async void OnGoHomeButtonClicked(object sender, EventArgs args)
+    private async void OnGoHomeButtonClicked(object sender, EventArgs args)
     {
         await Navigation.PopToRootAsync();
     }

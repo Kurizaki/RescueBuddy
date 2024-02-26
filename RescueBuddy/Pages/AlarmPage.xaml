@@ -1,6 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RescueBuddy.AlarmPage"
+             x:Class="RescueBuddy.Pages.AlarmPage"
              Title="AlarmPage"
              BackgroundColor="#41AC60">
 
@@ -35,8 +35,7 @@
             StrokeShape="RoundRectangle 40,40,40,40">
 
             <Label Margin="5"
-               Grid.ColumnSpan="2"
-               FontSize="24"
+                   FontSize="24"
                FontAttributes="Italic, Bold"
                FontFamily="Black Italic"
                Text="Home"
@@ -64,6 +63,7 @@
             TextColor="{StaticResource TextColor}"/>
 
         <Button Grid.Row="1"
+                x:Name="RecordAudioButton"
             Grid.ColumnSpan="2"
             WidthRequest="250"
             HeightRequest="60"
