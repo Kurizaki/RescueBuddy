@@ -21,12 +21,14 @@ namespace RescueBuddy.Pages
             _audioManager = audioManager;
             _audioRecorder = audioManager.CreateRecorder();
             InitializeAudioPlayer();
+            Console.WriteLine("AlarmPage instance initialized.");
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             StartAudio();
+            Console.WriteLine("AlarmPage appeared.");
         }
 
         protected override void OnDisappearing()
@@ -37,8 +39,8 @@ namespace RescueBuddy.Pages
             {
                 StopRecording();
             }
+            Console.WriteLine("AlarmPage disappeared.");
         }
-
 
         private async void InitializeAudioPlayer()
         {
@@ -59,16 +61,18 @@ namespace RescueBuddy.Pages
 
         public async Task StartRecording()
         {
+            _recordingStartTime = DateTime.Now;
             _audioFileName = $"{_recordingStartTime:yyyyMMdd_HHmmss}.wav";
             string audioFilePath = Path.Combine(_logFolder, _audioFileName);
-            _recordingStartTime = DateTime.Now;
             await this._audioRecorder.StartAsync(audioFilePath);
+            Console.WriteLine($"Recording started. File: {_audioFileName}, Path: {audioFilePath}");
         }
 
         public async Task StopRecording()
         {
             await this._audioRecorder.StopAsync();
             Log($"Audio recorded: {_audioFileName}, Date: {_recordingStartTime}, Duration: {(DateTime.Now - _recordingStartTime)}");
+            Console.WriteLine($"Recording stopped. File: {_audioFileName}");
         }
 
         private async void OnEndRescueButtonClicked(object sender, EventArgs args)
@@ -163,10 +167,19 @@ namespace RescueBuddy.Pages
         {
             try
             {
-                _logFileName = $"{_recordingStartTime:yyyyMMdd_HHmmss}.txt";
-                string logFilePath = Path.Combine(_logFolder, _logFileName);
+                string timestamp = $"{_recordingStartTime:yyyyMMdd_HHmmss}";
+                _logFileName = $"{timestamp}.txt";
+                string logFolderPath = Path.Combine(_logFolder);
+
+                if (!Directory.Exists(logFolderPath))
+                {
+                    Directory.CreateDirectory(logFolderPath);
+                }
+
+                string logFilePath = Path.Combine(logFolderPath, _logFileName);
                 string logMessage = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
                 File.AppendAllText(logFilePath, logMessage + Environment.NewLine);
+                Console.WriteLine($"Logged: {logMessage}");
             }
             catch (Exception ex)
             {
