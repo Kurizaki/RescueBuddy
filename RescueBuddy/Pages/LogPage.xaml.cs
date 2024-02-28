@@ -7,9 +7,10 @@ namespace RescueBuddy.Pages
         private IAudioPlayer _audioPlayer;
         private readonly IAudioManager _audioManager;
         private List<LogItem> _logs;
+
         public List<LogItem> Logs
         {
-            get { return _logs; }
+            get => _logs;
             set
             {
                 _logs = value;
@@ -20,7 +21,7 @@ namespace RescueBuddy.Pages
         private LogItem _selectedLog;
         public LogItem SelectedLog
         {
-            get { return _selectedLog; }
+            get => _selectedLog;
             set
             {
                 _selectedLog = value;
@@ -28,61 +29,44 @@ namespace RescueBuddy.Pages
             }
         }
 
+        private readonly string _logFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Logs");
+
         public LogPage()
         {
             InitializeComponent();
+            BindingContext = this;
             Logs = new List<LogItem>();
             LoadLogs();
-            BindingContext = this;
         }
-
-        private readonly string _logFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Logs");
 
         private async void LoadLogs()
         {
-            var logs = new List<LogItem>();
-
             try
             {
-                Console.WriteLine("Checking log folder existence...");
                 if (Directory.Exists(_logFolder))
                 {
-                    Console.WriteLine($"Log folder {_logFolder} exists.");
-
                     string[] logFiles = Directory.GetFiles(_logFolder);
-
-                    Console.WriteLine($"Found {logFiles.Length} log files.");
 
                     foreach (string logFile in logFiles)
                     {
-                        Console.WriteLine($"Reading log file: {logFile}");
-
                         string logName = Path.GetFileNameWithoutExtension(logFile);
-                        string[] logDetailsArray = File.ReadAllLines(logFile);
+                        string[] logDetailsArray = await Task.Run(() => File.ReadAllLines(logFile));
                         List<string> logDetailsList = new List<string>(logDetailsArray);
                         string audioFile = Path.Combine(_logFolder, $"{logName}.wav");
                         bool audioExists = File.Exists(audioFile);
 
-                        Console.WriteLine($"Adding log item: {logName}");
-
-                        logs.Add(new LogItem { LogText = logName, LogDetails = logDetailsList, AudioFile = audioExists ? audioFile : null });
+                        Logs.Add(new LogItem { LogText = logName, LogDetails = logDetailsList, AudioFile = audioExists ? audioFile : null });
                     }
                 }
-                else
-                {
-                    Console.WriteLine($"Log folder {_logFolder} does not exist.");
-                }
+                UpdateListView();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error loading logs: {ex.Message}");
             }
 
-            Logs = logs;
-
-            Console.WriteLine("Loading logs completed.");
+            UpdateListView();
         }
-
 
         private async void PlayAudioButton_Clicked(object sender, EventArgs e)
         {
@@ -109,13 +93,10 @@ namespace RescueBuddy.Pages
             }
         }
 
-        private void LogsListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void UpdateListView()
         {
-            SelectedLog = e.Item as LogItem;
-            if (SelectedLog != null)
-            {
-                PlayAudio(SelectedLog.AudioFile);
-            }
+            LogsListView.ItemsSource = null;
+            LogsListView.ItemsSource = Logs;
         }
 
         public class LogItem

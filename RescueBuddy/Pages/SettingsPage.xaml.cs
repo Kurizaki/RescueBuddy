@@ -24,7 +24,7 @@ namespace RescueBuddy.Pages
         }
         private void LoadContacts()
         {
-            _contacts.Clear(); // Clear existing contacts to avoid duplicates when reloading
+            _contacts.Clear();
             string[] lines = File.ReadAllLines(_contactsFileName);
             foreach (string line in lines)
             {
