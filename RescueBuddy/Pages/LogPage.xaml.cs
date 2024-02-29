@@ -1,9 +1,9 @@
 using Plugin.Maui.Audio;
-
 namespace RescueBuddy.Pages
 {
     public partial class LogPage : ContentPage
     {
+        private readonly string _logFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Logs");
         private IAudioPlayer _audioPlayer;
         private readonly IAudioManager _audioManager;
         private List<LogItem> _logs;
@@ -26,16 +26,39 @@ namespace RescueBuddy.Pages
             {
                 _selectedLog = value;
                 OnPropertyChanged(nameof(SelectedLog));
+                UpdateSelectedLogDetails();
+                IsAudioButtonEnabled = (value != null);
             }
         }
 
-        private readonly string _logFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Logs");
+        private List<string> _selectedLogDetails;
+        public List<string> SelectedLogDetails
+        {
+            get => _selectedLogDetails;
+            set
+            {
+                _selectedLogDetails = value;
+                OnPropertyChanged(nameof(SelectedLogDetails));
+            }
+        }
+
+        private bool _isAudioButtonEnabled;
+        public bool IsAudioButtonEnabled
+        {
+            get => _isAudioButtonEnabled;
+            set
+            {
+                _isAudioButtonEnabled = value;
+                OnPropertyChanged(nameof(IsAudioButtonEnabled));
+            }
+        }
 
         public LogPage()
         {
             InitializeComponent();
             BindingContext = this;
             Logs = new List<LogItem>();
+            _audioManager = DependencyService.Get<IAudioManager>(); // You might need to adjust this based on your dependency injection setup
             LoadLogs();
         }
 
@@ -97,6 +120,19 @@ namespace RescueBuddy.Pages
         {
             LogsListView.ItemsSource = null;
             LogsListView.ItemsSource = Logs;
+        }
+
+        private void UpdateSelectedLogDetails()
+        {
+            SelectedLogDetails = SelectedLog != null ? SelectedLog.LogDetails : null;
+        }
+
+        private async void LogsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                SelectedLog = e.SelectedItem as LogItem;
+            }
         }
 
         public class LogItem

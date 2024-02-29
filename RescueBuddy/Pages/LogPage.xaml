@@ -2,28 +2,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RescueBuddy.Pages.LogPage"
              Title="Logs">
-    <StackLayout>
-        <ListView x:Name="LogsListView"
-                  ItemsSource="{Binding Logs}"
-                  SelectedItem="{Binding SelectedLog}"
-                  HasUnevenRows="True">
+    <Grid RowDefinitions="Auto, Auto, *" ColumnDefinitions=".75*, .25*" BackgroundColor="{StaticResource PrimaryColor}">
+        <Label Margin="0,0,0,0" Grid.ColumnSpan="2" FontSize="36" FontAttributes="Italic, Bold" FontFamily="Black Italic" HorizontalOptions="Center" Text="RescueBuddy" TextColor="{StaticResource TextColor}"/>
+        <Border Grid.Row="1" StrokeThickness="0" Grid.ColumnSpan="2" Margin="0,5,0,0" BackgroundColor="{StaticResource BorderColor}" HorizontalOptions="FillAndExpand" HeightRequest="900" StrokeShape="RoundRectangle 40,40,40,40">
+            <Label Margin="5" FontSize="24" FontAttributes="Italic, Bold" FontFamily="Black Italic" Text="Logs" HorizontalOptions="Center" TextColor="{StaticResource TextColor}"/>
+        </Border>
+
+        <ListView x:Name="LogsListView" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Logs}" SelectedItem="{Binding SelectedLog}" HasUnevenRows="True" Margin="20,50,20,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding LogText}" />
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding LogText}" TextColor="{StaticResource TextColor}" />
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button Text="Play Audio" Clicked="PlayAudioButton_Clicked" Margin="90,400,0,0" Grid.Row="1" HeightRequest="50" WidthRequest="300" BackgroundColor="#1F1F1F" IsEnabled="{Binding IsAudioButtonEnabled}"/>
+    </Grid>
 
-        <Button Text="Play Audio" Clicked="PlayAudioButton_Clicked" />
-
-        <ScrollView>
-            <StackLayout BindableLayout.ItemsSource="{Binding SelectedLogDetails}" Margin="10">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="{Binding}" />
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
-        </ScrollView>
-    </StackLayout>
 </ContentPage>

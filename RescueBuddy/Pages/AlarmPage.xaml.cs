@@ -21,25 +21,22 @@ namespace RescueBuddy.Pages
             _audioManager = audioManager;
             _audioRecorder = audioManager.CreateRecorder();
             InitializeAudioPlayer();
-            Console.WriteLine("AlarmPage instance initialized.");
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             StartAudio();
-            Console.WriteLine("AlarmPage appeared.");
         }
 
-        protected override void OnDisappearing()
+        protected override async void OnDisappearing()
         {
             base.OnDisappearing();
             StopAudio();
             if (_audioRecorder.IsRecording)
             {
-                StopRecording();
+                await StopRecording();
             }
-            Console.WriteLine("AlarmPage disappeared.");
         }
 
         private async void InitializeAudioPlayer()
@@ -62,17 +59,29 @@ namespace RescueBuddy.Pages
         public async Task StartRecording()
         {
             _recordingStartTime = DateTime.Now;
-            _audioFileName = $"{_recordingStartTime:yyyyMMdd_HHmmss}.wav";
-            string audioFilePath = Path.Combine(_logFolder, _audioFileName);
+            string baseFileName = $"{_recordingStartTime:yyyyMMdd_HHmmss}.wav";
+            string audioFilePath = Path.Combine(_logFolder, baseFileName);
+
+            int counter = 1;
+            while (File.Exists(audioFilePath))
+            {
+                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(baseFileName);
+                string extension = Path.GetExtension(baseFileName);
+                string numberedFileName = $"{fileNameWithoutExtension} ({counter}){extension}";
+                audioFilePath = Path.Combine(_logFolder, numberedFileName);
+                counter++;
+            }
+
+            _audioFileName = Path.GetFileName(audioFilePath);
+
             await this._audioRecorder.StartAsync(audioFilePath);
-            Console.WriteLine($"Recording started. File: {_audioFileName}, Path: {audioFilePath}");
         }
+
 
         public async Task StopRecording()
         {
             await this._audioRecorder.StopAsync();
             Log($"Audio recorded: {_audioFileName}, Date: {_recordingStartTime}, Duration: {(DateTime.Now - _recordingStartTime)}");
-            Console.WriteLine($"Recording stopped. File: {_audioFileName}");
         }
 
         private async void OnEndRescueButtonClicked(object sender, EventArgs args)
@@ -80,17 +89,17 @@ namespace RescueBuddy.Pages
             await Navigation.PopToRootAsync();
         }
 
-        private void OnRecordAudioButtonClicked(object sender, EventArgs args)
+        private async void OnRecordAudioButtonClicked(object sender, EventArgs args)
         {
             if (!_audioRecorder.IsRecording)
             {
-                StartRecording();
+                await StartRecording();
                 RecordAudioButton.Text = "Stop Record Audio";
             }
             else
             {
                 RecordAudioButton.Text = "Record Audio";
-                StopRecording();
+                await StopRecording();
             }
         }
 
@@ -147,22 +156,23 @@ namespace RescueBuddy.Pages
                 }
                 else
                 {
-                    Console.WriteLine("Phone calls not supported on this device.");
+                    DisplayAlert("Not Supported", "Phone calls not supported on this device.", "OK");
                 }
             }
             catch (ArgumentNullException ex)
             {
-                Console.WriteLine($"Invalid phone number: {ex.Message}");
+                DisplayAlert("Invalid Number", $"Invalid phone number: {ex.Message}", "OK");
             }
             catch (FeatureNotSupportedException)
             {
-                Console.WriteLine("Phone calls not supported on this device.");
+                DisplayAlert("Not Supported", "Phone calls not supported on this device.", "OK");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                DisplayAlert("Error", $"Error: {ex.Message}", "OK");
             }
         }
+
         private void Log(string message)
         {
             try
@@ -179,11 +189,10 @@ namespace RescueBuddy.Pages
                 string logFilePath = Path.Combine(logFolderPath, _logFileName);
                 string logMessage = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}";
                 File.AppendAllText(logFilePath, logMessage + Environment.NewLine);
-                Console.WriteLine($"Logged: {logMessage}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error logging: {ex.Message}");
+                DisplayAlert("Error", $"Error logging: {ex.Message}", "OK");
             }
         }
     }

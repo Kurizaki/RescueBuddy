@@ -136,8 +136,8 @@ namespace RescueBuddy.Pages
                 _contacts.Remove(selectedContact);
                 UpdateListView();
                 ClearFields();
-                ApplyChangesButton.IsVisible = false; // Hide the Apply Changes button
-                AddContactButton.IsVisible = true; // Show the Add Contact button
+                ApplyChangesButton.IsVisible = false;
+                AddContactButton.IsVisible = true;
                 SaveContacts();
             }
         }
