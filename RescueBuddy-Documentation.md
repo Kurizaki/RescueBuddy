@@ -9,6 +9,7 @@ By Keanu Koelewijn
 | 26-01-2024 | 0.0.3   | updated Implementation documentation                                |
 | 02-02-2024 | 0.0.4   | updated Implementation documentation                                |
 | 29-02-2024 | 0.0.5   | updated Implementation documentation and run tests                  |
+| 01-03-2024 | 1.0.0   | updated and finished documentation                                  |
 
 ## 1 Inform
 
