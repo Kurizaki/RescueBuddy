@@ -1,7 +1,8 @@
 using Plugin.Maui.Audio;
 namespace RescueBuddy.Pages
 {
-    public partial class LogPage : ContentPage
+    // Log Page is not 100% complete and CHatGPT was used for some functions in here.
+    public partial class LogPage
     {
         private readonly string _logFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Logs");
         private IAudioPlayer _audioPlayer;
@@ -58,7 +59,7 @@ namespace RescueBuddy.Pages
             InitializeComponent();
             BindingContext = this;
             Logs = new List<LogItem>();
-            _audioManager = DependencyService.Get<IAudioManager>(); // You might need to adjust this based on your dependency injection setup
+            _audioManager = DependencyService.Get<IAudioManager>();
             LoadLogs();
         }
 
